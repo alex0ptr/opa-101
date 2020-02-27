@@ -1,0 +1,68 @@
+users:
+  alice:
+    policies: []
+  bob:
+    policies:
+      - mayViewCarolsFiles
+  carol:
+    policies:
+      - allAccessOnCarolsFiles
+      - mayViewEvesRecipes
+  dan:
+    policies: []
+  eve:
+    policies: []
+
+groups:
+  management:
+    members:
+      - alice
+      - eve
+    policies:
+      - allAccess
+  developer:
+    members:
+      - bob
+      - carol
+      - dan
+      - eve
+    policies:
+      - mayViewCarolsReport
+
+policies:
+
+  allAccess:
+    verbs: 
+      - "*"
+    paths:
+      - "*"
+
+  allAccessOnCarolsFiles:
+    verbs: 
+      - "*"
+    paths:
+      - users/carol/documents
+      - users/carol/documents/*
+
+  mayViewCarolsFiles:
+    verbs: 
+      - list
+      - view
+    paths:
+      - users/carol/documents
+      - users/carol/documents/*
+
+  mayViewCarolsReport:
+    verbs: 
+      - view
+    paths:
+      - users/carol/documents/report.pdf
+  
+
+  mayViewEvesRecipes:
+    verbs: 
+      - list
+      - view
+    paths:
+      - users/eve/documents/recipes
+      - users/eve/documents/recipes/*

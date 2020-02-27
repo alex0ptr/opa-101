@@ -1,0 +1,4 @@
+apiVersion: v2
+name: demo-rules
+description: a demo chart for deploying demo rego rules
+version: 0.1.0
