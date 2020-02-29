@@ -51,17 +51,23 @@ curl localhost:8181/v1/data/api/who_can --data '{ "input": {"verb": "view", "pat
 
 ## Gatekeeper Demo
 
-Create a cluster and configure kubectl:
-```bash
-k3d create
-export KUBECONFIG="$(k3d get-kubeconfig --name='k3s-default')"
-```
-
-Install gatekeeper using helm:
+Get the setup ready:
 ```bash
 cd gatekeeper
-kubectl apply -f gatekeeper-operator/gatekeeper.yaml
-```
+. ./demo.sh
+
+create-cluster
 ```
 
+Run the demos:
+```
+demo-labels
+demo-limits
+demo-inventory
+```
+
+Shut it down:
+```bash
+delete-cluster
+```
 
