@@ -1,6 +1,51 @@
+## Playing with OPA
+
+Start a OPA shell:
+```bash
+opa run
+```
+
+Put some data into a variable:
+
+```rego
+
+cities := {
+    "München": {
+        "population": 1456000,
+        "area": 310
+    },
+    "Rosenheim": {
+        "population": 63000,
+        "area": 37
+    },
+    "Mainz": {
+        "population": 209000,
+        "area": 97
+    },
+    "Darmstadt": {
+        "population": 158000,
+        "area": 122
+    }
+}
+students := {
+    "Berlin": 180000,
+    "München": 120000,
+    "Hamburg": 84000,
+    "Darmstadt": 40000,
+    "Mainz": 40000,
+    "Rosenheim": 5300
+}
+
+```
+
+Determine which cities are good for hiring:
+```
+s := students[city]; qc := qaware[city]; qc.employees / s < 0.0006; qc.clients > 0
+```
+
 ## API Demo
 
-### Working with the shell
+Determine ### Working with the shell
 
 Format:
 ```bash
@@ -71,3 +116,15 @@ Shut it down:
 delete-cluster
 ```
 
+
+## Conftest
+
+Test if deployments define root containers:
+```bash
+conftest test deployment.yaml
+```
+
+Test if service selector matches those of the deployment:
+```bash
+conftest test --combine *.yaml
+```
