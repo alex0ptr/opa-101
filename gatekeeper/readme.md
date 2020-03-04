@@ -1,11 +1,21 @@
-## Conftest
+## Gatekeeper Demo
 
-Test if deployments define root containers:
+Get the setup ready:
 ```bash
-conftest test deployment.yaml
+cd gatekeeper
+. ./demo.sh
+
+create-cluster
 ```
 
-Test if service selector matches those of the deployment:
+Run the demos:
+```
+demo-labels
+demo-limits
+demo-inventory
+```
+
+Shut it down:
 ```bash
-conftest test --combine *.yaml
+delete-cluster
 ```
