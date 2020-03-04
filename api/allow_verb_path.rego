@@ -26,11 +26,11 @@ policies_with_matching_input_verb[policy_name] {
 }
 
 policies_with_matching_input_path[policy_name] {
-	path := policies[policy_name].paths[_]
-	endswith(path, "*")
-	startswith(input.path, trim_suffix(path, "*"))
+	policies[policy_name].paths[_] = input.path
 }
 
 policies_with_matching_input_path[policy_name] {
-	policies[policy_name].paths[_] = input.path
+	path := policies[policy_name].paths[_]
+	endswith(path, "*")
+	startswith(input.path, trim_suffix(path, "*"))
 }
