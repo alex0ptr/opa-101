@@ -6,6 +6,6 @@ code constraints/owner_must_be_provided.yaml
 kubectl apply -f constraints/owner_must_be_provided.yaml
 
 kubectl create ns production
-cat good_resources/namespace.yaml
+bat good_resources/namespace.yaml
 kubectl apply -f good_resources/namespace.yaml
 

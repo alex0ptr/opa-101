@@ -2,7 +2,7 @@
 #doitlive shell: /bin/zsh
 #doitlive prompt: robbyrussell
 
-cat dryrun/existing_resources/*
+bat dryrun/existing_resources/*
 kubectl apply -f dryrun/existing_resources
 kubectl get ingress --all-namespaces
 
