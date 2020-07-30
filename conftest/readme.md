@@ -7,5 +7,5 @@ conftest test deployment.yaml
 
 Test if service selector matches those of the deployment:
 ```bash
-conftest test --combine *.yaml## Gatekeeper Demo
+conftest test --combine *.yaml
 ```

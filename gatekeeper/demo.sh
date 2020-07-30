@@ -1,18 +1,12 @@
 function create-cluster {
-    k3d c
+    k3d cluster create
 
-    until k3d get-kubeconfig >> /dev/null; do
-        echo "cluster not ready, waiting..."
-        sleep 1
-    done
-
-    export KUBECONFIG="$(k3d get-kubeconfig --name='k3s-default')"
     kubectl apply -f gatekeeper-operator/gatekeeper.yaml
     kubectl config set-context $(kubectl config current-context) --namespace production
 }
 
 function delete-cluster {
-    k3d d
+    k3d cluster delete
 }
 
 function reset {
@@ -41,3 +35,4 @@ function demo-inventory {
     cd -
     clear
 }
+
